@@ -1,0 +1,25 @@
+{
+  "name": "skidays-counter-redux-application",
+  "version": "1.0.0",
+  "description": "A redux application to calculate ski days",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/babel-node ./src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhirajj14/SkiDays-Redux-Application.git"
+  },
+  "author": "Dhiraj jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhirajj14/SkiDays-Redux-Application/issues"
+  },
+  "homepage": "https://github.com/dhirajj14/SkiDays-Redux-Application#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {}
+}
