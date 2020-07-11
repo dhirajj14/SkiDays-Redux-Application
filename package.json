@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "dependencies": {
-    "expect": "^26.1.0"
+    "expect": "^26.1.0",
+    "redux": "^4.0.5"
   }
 }

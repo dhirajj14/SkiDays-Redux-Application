@@ -1,31 +1,48 @@
 import C from './constants'
-import { suggestions, fetching } from './store/reducers'
-import expect from 'expect'
+import appReducer from './store/reducers'
+import initialState from './initialState.json'
 
-const state = {
-    fetching : true,
-    suggestions: []
-}
-
-const expectedState = {
-    fetching : false,
-    suggestions: ["Heavenly Ski Resort", "Heavenly Sonohara"]
-}
-
-const action = {
-    type : C.CHANGE_SUGGESTIONS,
-    payload: ["Heavenly Ski Resort", "Heavenly Sonohara"]
-}
-const actualState = {
-    fetching: fetching(state.fetching, action),
-    suggestions: suggestions(state.suggestions, action)
-}
-
-expect(actualState.fetching).toEqual(expectedState.fetching);
-expect(actualState.suggestions).toEqual(expectedState.suggestions);
+let state = initialState
 
 console.log(`
 
-    Fetching challenge passed!
+    Initial State
+    =============
+    goal: ${state.goal}
+    resorts: ${JSON.stringify(state.allSkiDays)}
+    fetching: ${state.resortNames.fetching}
+    suggestions: ${state.resortNames.suggestions}
+
+`)
+
+state = appReducer(state, {
+    type: C.SET_GOAL,
+    payload: 2
+})
+
+state = appReducer(state, {
+    type: C.ADD_DAY,
+    payload: {
+        "resort" : "DJ Wood",
+        "date" : "2020-07-09",
+        "powder" : false,
+        "backcountry" : true
+    }
+})
+
+state = appReducer(state, {
+    type: C.CHANGE_SUGGESTIONS,
+    payload: ["D Wood", "DD Wood", "DP Wood"]
+})
+
+
+console.log(`
+
+    Next State
+    =============
+    goal: ${state.goal}
+    resorts: ${JSON.stringify(state.allSkiDays)}
+    fetching: ${state.resortNames.fetching}
+    suggestions: ${state.resortNames.suggestions}
 
 `)
