@@ -1,26 +1,22 @@
 import C from './constants'
 import appReducer from './store/reducers'
-import initialState from './initialState.json'
+// import initialState from './initialState.json'
+import { createStore } from 'redux'
 
-let state = initialState
+const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {}
+let store = createStore(appReducer)
 
-console.log(`
+store.subscribe(() => console.log("Initial State", store.getState()))
 
-    Initial State
-    =============
-    goal: ${state.goal}
-    resorts: ${JSON.stringify(state.allSkiDays)}
-    fetching: ${state.resortNames.fetching}
-    suggestions: ${state.resortNames.suggestions}
+window.store = store
 
-`)
-
-state = appReducer(state, {
-    type: C.SET_GOAL,
-    payload: 2
+store.subscribe(() => {
+    const state = JSON.stringify(store.getState())
+    localStorage['redux-store'] = state
 })
 
-state = appReducer(state, {
+
+store.dispatch({
     type: C.ADD_DAY,
     payload: {
         "resort" : "DJ Wood",
@@ -30,19 +26,7 @@ state = appReducer(state, {
     }
 })
 
-state = appReducer(state, {
-    type: C.CHANGE_SUGGESTIONS,
-    payload: ["D Wood", "DD Wood", "DP Wood"]
+store.dispatch({
+    type: C.SET_GOAL,
+    payload: 2
 })
-
-
-console.log(`
-
-    Next State
-    =============
-    goal: ${state.goal}
-    resorts: ${JSON.stringify(state.allSkiDays)}
-    fetching: ${state.resortNames.fetching}
-    suggestions: ${state.resortNames.suggestions}
-
-`)
