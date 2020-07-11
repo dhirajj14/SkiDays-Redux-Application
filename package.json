@@ -18,11 +18,16 @@
   "homepage": "https://github.com/dhirajj14/SkiDays-Redux-Application#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
     "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "json-loader": "^0.5.7"
   },
   "dependencies": {
     "expect": "^26.1.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
