@@ -1,50 +1,62 @@
-import C from './constants'
 import storeFactory from './store'
+import { addDay, removeDay, setGoal } from './actions'
 // import initialState from './initialState.json'
-import { createStore } from 'redux'
+// import { createStore } from 'redux'
 
-const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {}
+// const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {}
 
-const saveState = () => {
-    const state = JSON.stringify(store.getState())
-    localStorage['redux-store'] = state
-}
+// const saveState = () => {
+//     const state = JSON.stringify(store.getState())
+//     localStorage['redux-store'] = state
+// }
 
-const store = storeFactory(initialState)
+const store = storeFactory()
 
-store.subscribe(saveState)
+store.dispatch(
+    addDay("Heavenly", "2020-07-09")
+)
 
+store.dispatch(
+    setGoal(12)
+)
 
-store.dispatch({
-    type: C.ADD_DAY,
-    payload: {
-        "resort" : "DJ Wood",
-        "date" : "2020-07-09",
-        "powder" : false,
-        "backcountry" : true
-    }
-})
+store.dispatch(
+    removeDay("2020-07-09")
+)
 
-store.dispatch({
-    type: C.ADD_DAY,
-    payload: {
-        "resort" : "DJ Resort",
-        "date" : "2020-07-10",
-        "powder" : true,
-        "backcountry" : false
-    }
-})
+// store.subscribe(saveState)
 
 
-store.dispatch({
-    type: C.ADD_DAY,
-    payload: {
-        "resort" : "DJ Ski",
-        "date" : "2020-07-11",
-        "powder" : false,
-        "backcountry" : true
-    }
-})
+// store.dispatch({
+//     type: C.ADD_DAY,
+//     payload: {
+//         "resort" : "DJ Wood",
+//         "date" : "2020-07-09",
+//         "powder" : false,
+//         "backcountry" : true
+//     }
+// })
+
+// store.dispatch({
+//     type: C.ADD_DAY,
+//     payload: {
+//         "resort" : "DJ Resort",
+//         "date" : "2020-07-10",
+//         "powder" : true,
+//         "backcountry" : false
+//     }
+// })
+
+
+// store.dispatch({
+//     type: C.ADD_DAY,
+//     payload: {
+//         "resort" : "DJ Ski",
+//         "date" : "2020-07-11",
+//         "powder" : false,
+//         "backcountry" : true
+//     }
+// })
 
 // let store = createStore(appReducer)
 
