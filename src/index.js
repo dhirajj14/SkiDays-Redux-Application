@@ -1,21 +1,31 @@
 import C from './constants'
-import { errors } from './store/reducers'
+import { suggestions, fetching } from './store/reducers'
+import expect from 'expect'
 
-const state = [
-    "user not authorized",
-    "server feed not found"
-]
+const state = {
+    fetching : true,
+    suggestions: []
+}
+
+const expectedState = {
+    fetching : false,
+    suggestions: ["Heavenly Ski Resort", "Heavenly Sonohara"]
+}
 
 const action = {
-    type: C.CLEAR_ERROR,
-    payload: 0
+    type : C.CHANGE_SUGGESTIONS,
+    payload: ["Heavenly Ski Resort", "Heavenly Sonohara"]
 }
-const nextState = errors(state, action)
+const actualState = {
+    fetching: fetching(state.fetching, action),
+    suggestions: suggestions(state.suggestions, action)
+}
+
+expect(actualState.fetching).toEqual(expectedState.fetching);
+expect(actualState.suggestions).toEqual(expectedState.suggestions);
 
 console.log(`
 
-    initial State: ${state}
-    action: ${JSON.stringify(action)}
-    new State: ${JSON.stringify(nextState)}
+    Fetching challenge passed!
 
 `)
