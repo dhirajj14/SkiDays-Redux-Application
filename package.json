@@ -4,7 +4,7 @@
   "description": "A redux application to calculate ski days",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node ./src/"
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -19,15 +19,16 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^7.1.5",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "json-loader": "^0.5.7"
+    "json-loader": "^0.5.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "expect": "^26.1.0",
-    "redux": "^4.0.5",
-    "webpack": "^4.43.0",
-    "webpack-dev-server": "^3.11.0"
+    "redux": "^4.0.5"
   }
 }
