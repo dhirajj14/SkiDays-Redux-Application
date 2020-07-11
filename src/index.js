@@ -1,5 +1,6 @@
 import storeFactory from './store'
-import { addDay, removeDay, setGoal } from './actions'
+import { addDay, removeDay, setGoal, addError, clearError, changeSuggestions, clearSuggestions, randomGoal} from './actions'
+
 // import initialState from './initialState.json'
 // import { createStore } from 'redux'
 
@@ -24,6 +25,26 @@ store.dispatch(
     removeDay("2020-07-09")
 )
 
+store.dispatch(
+    addError("Something went wrong!!")
+)
+console.log("addError works!")
+
+store.dispatch(
+    clearError(0)
+)
+
+store.dispatch(
+    changeSuggestions(["Heavenly","Heavenly wood","Heavenly Resort"])
+)
+
+store.dispatch(
+    clearSuggestions()
+)
+
+store.dispatch(
+    randomGoal()
+)
 // store.subscribe(saveState)
 
 
