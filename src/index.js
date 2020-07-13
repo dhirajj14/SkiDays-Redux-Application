@@ -1,102 +1,19 @@
-import storeFactory from './store'
-import { addDay, removeDay, setGoal, addError, clearError, changeSuggestions, clearSuggestions, randomGoal} from './actions'
+import C from './constants'
+import React from 'react'
+import { render } from 'react-dom'
+import routes from './routes'
+import sampleData from './initialState'
 
-// import initialState from './initialState.json'
-// import { createStore } from 'redux'
+const initialState = (localStorage["redux-store"]) ?
+    JSON.parse(localStorage["redux-store"]) :
+    sampleData
 
-// const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {}
+const saveState = () => 
+    localStorage["redux-store"] = JSON.stringify(store.getState())
 
-// const saveState = () => {
-//     const state = JSON.stringify(store.getState())
-//     localStorage['redux-store'] = state
-// }
+window.React = React
 
-const store = storeFactory()
-
-store.dispatch(
-    addDay("Heavenly", "2020-07-09")
+render(
+	routes,
+  document.getElementById('react-container')
 )
-
-store.dispatch(
-    setGoal(12)
-)
-
-store.dispatch(
-    removeDay("2020-07-09")
-)
-
-store.dispatch(
-    addError("Something went wrong!!")
-)
-console.log("addError works!")
-
-store.dispatch(
-    clearError(0)
-)
-
-store.dispatch(
-    changeSuggestions(["Heavenly","Heavenly wood","Heavenly Resort"])
-)
-
-store.dispatch(
-    clearSuggestions()
-)
-
-store.dispatch(
-    randomGoal()
-)
-// store.subscribe(saveState)
-
-
-// store.dispatch({
-//     type: C.ADD_DAY,
-//     payload: {
-//         "resort" : "DJ Wood",
-//         "date" : "2020-07-09",
-//         "powder" : false,
-//         "backcountry" : true
-//     }
-// })
-
-// store.dispatch({
-//     type: C.ADD_DAY,
-//     payload: {
-//         "resort" : "DJ Resort",
-//         "date" : "2020-07-10",
-//         "powder" : true,
-//         "backcountry" : false
-//     }
-// })
-
-
-// store.dispatch({
-//     type: C.ADD_DAY,
-//     payload: {
-//         "resort" : "DJ Ski",
-//         "date" : "2020-07-11",
-//         "powder" : false,
-//         "backcountry" : true
-//     }
-// })
-
-// let store = createStore(appReducer)
-
-// //store.subscribe(() => console.log("Initial State", store.getState()))
-
-// window.store = store
-
-// const unsubscribeGoalLoagger = store.subscribe(() => {
-//     console.log(`Goal: ${store.getState().goal}`)
-// })
-
-
-
-
-// setInterval(()=>{
-//     store.dispatch({
-//         type: C.SET_GOAL,
-//         payload: Math.floor(Math.random() * 100)
-//     })
-// }, 250)
-
-// setTimeout(()=> unsubscribeGoalLoagger, 3000)
