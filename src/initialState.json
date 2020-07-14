@@ -9,11 +9,11 @@
         {
             "resort" : "Squaw Valley",
             "date" : "2016-12-8",
-            "powder" : false,
+            "powder" : true,
             "backcountry" : false
         },
         {
-            "resort" : "Kirkwood",
+            "resort" : "Kirkwood Resort",
             "date" : "2016-12-9",
             "powder" : false,
             "backcountry" : true
